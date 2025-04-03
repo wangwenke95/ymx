@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Text Highlight</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <textarea v-model="text"></textarea>
+    <input v-model="keyword" placeholder="输入要高亮的词">
+    <div v-html="highlightedText"></div>
+</div>
+
+<script>
+    const { createApp } = Vue;
+
+    createApp({
+        data() {
+            return {
+                text: '',
+                keyword: '',
+            };
+        },
+        computed: {
+            highlightedText() {
+                const re = new RegExp(this.keyword, 'g');
+                return this.text.replace(re, `<span class="highlight">${this.keyword}</span>`);
+            },
+        },
+        methods: {
+            highlight() {
+                // 这里可以添加更多逻辑，比如判断关键词是否为空等
+            },
+        },
+    }).mount('#app');
+</script>
+</body>
+
+</html>
