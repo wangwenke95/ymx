@@ -67,7 +67,7 @@ const updateDetailsText=()=>{
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text).then(() => {
     ElNotification({
-      message: '复制成功！',
+      message: '复制成功！!',
       type: 'success',
     })
   }).catch(err => {
